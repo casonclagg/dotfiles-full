@@ -15,7 +15,8 @@ if [ -f ~/.bash_local ]; then
 fi
 
 source ~/.exports
-
+export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 export GOPATH=$HOME/projects/go
 PATH=/usr/local/bin:/usr/local/go/bin:$PATH
@@ -30,7 +31,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias hhh='cd ~/projects/dotfiles-full && git add -A && git commit -m "random update" && git push'
+alias hhh='cd ~/.homesick/repos/dotfiles-full && git add -A && git commit -m "random update" && git push'
 alias hsp='homesick pull --all'
 
 alias st='git status'
@@ -246,3 +247,7 @@ function resty-auth {
   echo "Connecting to $1 with $2"
   resty $1 -H "Content-Type: application/json" -H "Accept: application/json" -Q -k -u $2:$3
 }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Install NVM for Node
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+
+# Setup Directories
 mkdir -p ~/projects/go
 
 system=(
@@ -19,15 +23,15 @@ neat=(
   # lnav
   # stormssh
   youtube-dl
-  the_silver_searcher
+  # the_silver_searcher
   imagemagick
 )
 
 utils=(
-  dfc
-  hh
-  htop
-  iftop
+  # dfc
+  # hh
+  # htop
+  # iftop
   # lighttpd
   # mtr
   ncdu
@@ -44,9 +48,9 @@ programming=(
   android-platform-tools
   clib
   go
-  node
-  postgresql
-  pgcli
+  # node
+  # postgresql
+  # pgcli
   python
   python3
   jq
@@ -54,21 +58,21 @@ programming=(
 
 casks=(
   adobe-reader
-  atom
+  # atom
   # betterzipql
   # kdiff3
   # cakebrew
   # caffeine
   # commander-one
   # dockertoolbox
-  dropbox
+  # dropbox
   firefox
   # google-chrome
-  google-drive
-  github-desktop
+  # google-drive
+  # github-desktop
   # handbrake
   # licecap
-  # iterm2
+  iterm2
   # qlcolorcode
   # qlmarkdown
   # qlstephen
@@ -78,10 +82,10 @@ casks=(
   # private-eye
   # satellite-eyes
   # skype
-  slack
+  # slack
   spotify
-  transmission
-  transmission-remote-gui
+  # transmission
+  # transmission-remote-gui
   vlc
   # volumemixer
   # webstorm
@@ -95,46 +99,11 @@ pips=(
 
 npms=(
   # gitjk
-  n
-  bower
-  ionic
-  ng6-cli
+  # n
+  # bower
+  # ionic
+  # ng6-cli
   # speed-test
-)
-
-apms=(
-  activate-power-mode
-  atom-beautify
-  atom-linter-node-dependencies
-  autocomplete-modules
-  double-tag
-  #editorconfig
-  # emmet
-  #file-icons
-  highlight-selected
-  hyperclick
-  js-hyperclick
-  #jumpy
-  language-docker
-  language-babel
-  language-ignore
-  language-jade
-  linter
-  linter-docker
-  linter-jsonlint
-  linter-eslint
-  #markdown-scroll-sync
-  #npm-outdated
-  #oceanic-next
-  #open-recent
-  pigments
-  #project-manager
-  #regex-tester
-  #seti-syntax
-  #slack-ui
-  #sync-settings
-  #todo-show
-  #travis-ci-status
 )
 
 fonts=(
@@ -224,7 +193,7 @@ install 'brew cask install --appdir=/Applications' ${casks[@]}
 # TODO: add info part of install or do reinstall?
 install 'pip install --upgrade' ${pips[@]}
 install 'npm install --global' ${npms[@]}
-install 'apm install' ${apms[@]}
+# install 'apm install' ${apms[@]}
 install 'brew cask install' ${fonts[@]}
 
 echo "Upgrading bash ..."

@@ -109,12 +109,13 @@ bash_prompt_command() {
   fi
 
   # Assign colors
-  P_PWD=${P_YELLOW}${P_PWD}
+  P_PWD=${P_WHITE}${P_PWD}
   P_USER=${P_BRIGHT_CYAN}${P_USER}
   P_HOST=${P_BLUE}${P_HOST}
 
   # FINAL PROMPT
-  PS1="${P_EXIT}${P_USER}${P_WHITE}@${P_HOST} ${P_PWD} ${P_GIT}${P_BRIGHT_MAGENTA}⌘  ${P_RESET}"
+  # PS1="${P_EXIT}${P_USER}${P_WHITE}@${P_HOST} ${P_PWD} ${P_GIT}${P_BRIGHT_MAGENTA}⌘  ${P_RESET}"
+  PS1="${P_EXIT}${P_PWD} ${P_GIT}${P_BRIGHT_MAGENTA}🌀  ${P_RESET}"
 }
 
 parse_git_status () {
