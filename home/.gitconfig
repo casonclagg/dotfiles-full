@@ -27,7 +27,7 @@
 [branch]
   autosetuprebase = always
 [diff]
-  tool = kdiff3
+  tool = code
 
 [url "git@bitbucket.org:"]
       insteadOf = bb:
