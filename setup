@@ -40,7 +40,6 @@ elixir-lang/vim-elixir
 avakhov/vim-yaml
 shime/vim-livedown
 leafgarland/typescript-vim
-vim-syntastic/vim-syntastic
 editorconfig/editorconfig-vim
 "
 
