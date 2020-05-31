@@ -1,13 +1,13 @@
 #!/bin/bash
 os=`uname`
 
-# if [[ "$os" == 'Linux' ]]; then
-#   JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:bin/javac::")
-#   alias ls='ls --color=auto'
-# elif [[ "$os" == 'Darwin' ]]; then
-#   JAVA_HOME=`/usr/libexec/java_home -v1.7`
-#   alias ls='ls -G'
-# fi
+if [[ "$os" == 'Linux' ]]; then
+  # Linux Business
+  alias ls='ls --color=auto'
+elif [[ "$os" == 'Darwin' ]]; then
+  # Mac Business
+  alias ls='ls -G'
+fi
 
 # run local bash stuff (pc-specific aliases and such)
 if [ -f ~/.bash_local ]; then
@@ -15,24 +15,20 @@ if [ -f ~/.bash_local ]; then
 fi
 
 source ~/.exports
+
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
-export GOPATH=$HOME/projects/go
-PATH=/usr/local/bin:/usr/local/go/bin:$PATH
-PATH=$PATH:$JAVA_HOME/bin
 PATH=$PATH:$HOME/bin
-PATH=$PATH:$GOPATH/bin
 
 ###############################################################################
 # Shortcuts                                                                   #
 ###############################################################################
 alias ll='ls -alF'
-alias la='ls -A'
 alias l='ls -CF'
 
-alias hhh='cd ~/.homesick/repos/dotfiles-full && git add -A && git commit -m "random update" && git push'
-alias hsp='homesick pull --all'
+alias homesick-push='cd ~/.homesick/repos/dotfiles-full && git add -A && git commit -m "random update" && git push'
+alias homesick-pull='homesick pull --all'
 
 alias st='git status'
 alias gitlogs='git log --decorate --graph --oneline --all'
@@ -41,15 +37,12 @@ alias ex='open . &'
 alias tod='cd ~/projects'
 alias tog='cd ~/Google\ Drive'
 alias killds='rm -f $(find . -name ".DS_Store" -type f)'
-alias sshul='ssh ubuntu@ultilabs.xyz'
-alias sshcc='ssh ubuntu@cason.cc'
 
 alias resource='source ~/.bash_profile && echo "Done!"'
-alias ipaddr='ipconfig getifaddr en0'
+alias whatsmyip='ipconfig getifaddr en0'
 
 # File System stuff.
-alias rm="trash" # trash comes from npm: trash-cli
-alias cpwd='pwd|tr -d "\n"|pbcopy'
+alias cpwd='pwd|tr -d "\n"|pbcopy' # copy pwd
 alias ..="cd ../"
 alias ...="cd ../../"
 
@@ -61,18 +54,19 @@ alias listfunctions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'" # show non 
 # OSX                                                                         #
 ###############################################################################
 
-# Show/hide desktop icons
-alias desktopShow="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-alias desktopHide="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+if [[ "$os" == 'Darwin' ]]; then
+  # Show/hide desktop icons
+  alias desktopShow="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+  alias desktopHide="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 
-# Show/hide hidden files by default
-alias hiddenFilesShow="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hiddenFilesHide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+  # Show/hide hidden files by default
+  alias hiddenFilesShow="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+  alias hiddenFilesHide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
-# Show/hide all filename extensions
-alias fileExtensionsShow="defaults write NSGlobalDomain AppleShowAllExtensions -bool true && killall Finder"
-alias fileExtensionsHide="defaults write NSGlobalDomain AppleShowAllExtensions -bool false && killall Finder"
-
+  # Show/hide all filename extensions
+  alias fileExtensionsShow="defaults write NSGlobalDomain AppleShowAllExtensions -bool true && killall Finder"
+  alias fileExtensionsHide="defaults write NSGlobalDomain AppleShowAllExtensions -bool false && killall Finder"
+fi
 ################
 # Docker
 ################
@@ -87,12 +81,12 @@ case $- in
       *) return;;
 esac
 
-# append to the history file, don't overwrite it
-shopt -s histappend
-
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+# Don't tab autocomplete when empty
+shopt -s no_empty_cmd_completion
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -101,48 +95,6 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set variable identifying the chroot you work in (used in the prompt below)
-# if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-#     debian_chroot=$(cat /etc/debian_chroot)
-# fi
-#
-# # set a fancy prompt (non-color, unless we know we "want" color)
-# case "$TERM" in
-#     xterm-color) color_prompt=yes;;
-# esac
-#
-# # uncomment for a colored prompt, if the terminal has the capability; turned
-# # off by default to not distract the user: the focus in a terminal window
-# # should be on the output of commands, not on the prompt
-# force_color_prompt=yes
-#
-# if [ -n "$force_color_prompt" ]; then
-#     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-# 	# We have color support; assume it's compliant with Ecma-48
-# 	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-# 	# a case would tend to support setf rather than setaf.)
-# 	color_prompt=yes
-#     else
-# 	color_prompt=
-#     fi
-# fi
-#
-# source ~/.git-prompt.sh
-# GIT_PS1_SHOWDIRTYSTATE=1
-# GIT_PS1_SHOWCOLORHINTS=1
-# PROMPT_DIRTRIM=5
-# PROMPT_COMMAND='__git_ps1 "\[\e[01;34m\]\w\[\e[0m\]" "\n\h\$ "'
-#
-# unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-# case "$TERM" in
-# xterm*|rxvt*)
-#     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-#     ;;
-# *)
-#     ;;
-# esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -174,11 +126,6 @@ shopt -s histappend
 # After each command, append to the history file and reread it
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
-# push public key to remote servers
-function ssh-pushkey {
-  ssh $1 "echo '`cat ~/.ssh/id_rsa.pub`' >> ~/.ssh/authorized_keys"
-}
-
 # add something to gitignore
 function gi {
   echo "$1" >> .gitignore
@@ -193,28 +140,6 @@ function docker-clean {
   docker rm $(docker ps -a -q)
   docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 }
-# `a` with no arguments opens the current directory in Atom Editor, otherwise
-# opens the given location
-function a() {
-  if [ $# -eq 0 ]; then
-    atom .;
-  else
-    atom "$@";
-  fi;
-}
-
-# Create a new directory and enter it
-function mkd() {
-  mkdir -p "$@" && cd "$_";
-}
-
-function yts() {
-  youtube-dl --no-mtime -f bestaudio[ext=mp3] --extract-audio --prefer-ffmpeg --audio-format "mp3" -i -o \(title\)s.%\(ext\)s $1
-}
-
-function yt() {
-  youtube-dl --no-mtime -f bestvideo[ext=mp4]+bestaudio -i -o %\(title\)s.%\(ext\)s $1
-}
 
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
 # the `.git` directory, listing directories first. The output gets piped into
@@ -224,30 +149,9 @@ function tre() {
   tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
-# `o` with no arguments opens the current directory, otherwise opens the given
-# location
-function o() {
-  if [ $# -eq 0 ]; then
-    open .;
-  else
-    open "$@";
-  fi;
-}
-
-# set up resty if it's there
-if [ -e ~/.restyrc ]; then
-    . ~/.restyrc
-fi
-
 source ~/.prompt
 
-# Connect to $1 with credentials $1 : $2.
-# Set up for JSON. Don't encode the request URL. Ignore key warnings.
-function resty-auth {
-  echo "Connecting to $1 with $2"
-  resty $1 -H "Content-Type: application/json" -H "Accept: application/json" -Q -k -u $2:$3
-}
-
 export NVM_DIR="$HOME/.nvm"
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

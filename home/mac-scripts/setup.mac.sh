@@ -218,6 +218,6 @@ do
 done
 
 echo "Setting mac defaults"
-source ~/.osx
+source ~/mac-scripts/.osx
 
 echo "Done!"
