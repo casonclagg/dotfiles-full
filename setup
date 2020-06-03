@@ -50,6 +50,34 @@ function usage() {
   "
 }
 
+# TODO - Test this
+function install_random() {
+  mkdir ~/projects
+
+  # Not sure I need to do this....
+  sudo apt-get install -y alsa-utils pulseaudio
+
+  # TODO - Install virtualbox
+  # TODO - Install VLC
+  
+  # Install non-sense
+  sudo apt install -y ruby
+  gem install lolcat
+  sudo apt-get install -y figlet cowsay fortune
+  figlet noice! | lolcat
+
+  # make nautilus not stupid
+  sudo apt-get remove -y nautilus-share
+  sudo apt-get install -y nautilus-share
+  mkdir -p /var/lib/samba/usershares
+
+  # install OBS
+  sudo apt install -y ffmpeg 
+  sudo add-apt-repository ppa:obsproject/obs-studio
+  sudo apt update
+  sudo apt install -y obs-studio
+}
+
 function install_apt_packages() {
   for apt_pkg in $@; do
     if ! $(dpkg -s $apt_pkg &> /dev/null); then
@@ -243,6 +271,8 @@ function install_vscode() {
 
 function install_docker() {
   if ! _has docker; then
+    sudo apt-get install -y docker.io
+
     distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
     curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
     curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
