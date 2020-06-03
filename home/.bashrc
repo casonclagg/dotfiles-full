@@ -15,6 +15,7 @@ if [ -f ~/.bash_local ]; then
 fi
 
 source ~/.exports
+source $HOME/.homesick/repos/homeshick/homeshick.sh
 
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
@@ -30,8 +31,12 @@ alias k='kubectl'
 alias ll='ls -alF'
 alias l='ls -CF'
 
-alias homesick-push='cd ~/.homesick/repos/dotfiles-full && git add -A && git commit -m "random update" && git push'
-alias homesick-pull='homesick pull --all'
+# alias homesick-push='cd ~/.homesick/repos/dotfiles-full && git add -A && git commit -m "random update" && git push'
+alias homesick-pull='homeshick pull dotfiles-full'
+
+# TODO - detect OS and make google-chrome be something else if it needs to be
+alias gh="google-chrome-stable https://github.com &"
+alias ex='nautilus . &'
 
 alias st='git status'
 alias gitlogs='git log --decorate --graph --oneline --all'
