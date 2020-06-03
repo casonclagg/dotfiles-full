@@ -21,3 +21,7 @@ For your custom settings that wont be shared (like `name` and `email`) can be pu
     email = "your@email.com"
 ```
 
+Local Files
+-----------
+There's a special local files folder somewhere secret! Use it.
+

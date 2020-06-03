@@ -54,8 +54,6 @@ function usage() {
 function install_random() {
   pip install --upgrade pip
 
-  mkdir ~/projects
-
   # Not sure I need to do this....
   sudo apt-get install -y alsa-utils pulseaudio
 
@@ -119,9 +117,12 @@ function install_node() {
     # Install the latest version of NVM
     LATEST_NVM=$(curl -sL https://api.github.com/repos/creationix/nvm/releases/latest | jq -r '.tag_name')
     curl -LSs https://raw.githubusercontent.com/creationix/nvm/$LATEST_NVM/install.sh | bash
+    
     # Add NVM to bash_local so it'll work in the shell
-    echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bash_local
-    echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.bash_local
+    # COMMENTED OUT: Because this is already in my bashrc...
+    # echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bash_local
+    # echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.bash_local
+    
     # load NVM so we can use it to install node
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"

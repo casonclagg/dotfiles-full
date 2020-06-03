@@ -123,6 +123,7 @@
 
     # index
   s  = status
+  st = status
   a  = add
   ia = add
   ir = reset
