@@ -52,6 +52,8 @@ function usage() {
 
 # TODO - Test this
 function install_random() {
+  pip install --upgrade pip
+
   mkdir ~/projects
 
   # Not sure I need to do this....
@@ -103,12 +105,19 @@ function install_vim_plugins() {
   done
 }
 
+function _has() {
+  if $(type -t "$1" &> /dev/null); then 
+    return 0 
+  fi 
+  return 1
+}
+
 function install_node() {
   if [ -f $HOME/.nvm/nvm.sh ]; then
     source $HOME/.nvm/nvm.sh
   else
     # Install the latest version of NVM
-    LATEST_NVM=$(curl -s https://api.github.com/repos/creationix/nvm/releases/latest | jq -r '.tag_name')
+    LATEST_NVM=$(curl -sL https://api.github.com/repos/creationix/nvm/releases/latest | jq -r '.tag_name')
     curl -LSs https://raw.githubusercontent.com/creationix/nvm/$LATEST_NVM/install.sh | bash
     # Add NVM to bash_local so it'll work in the shell
     echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bash_local
@@ -127,12 +136,7 @@ function install_node() {
   fi
 }
 
-function _has() {
-  if $(type -t "$1" &> /dev/null); then 
-    return 0 
-  fi 
-  return 1
-}
+
 
 function install_golang() {
   if [ ! -d "$HOME/.go" ] && [ ! -d "$HOME/go" ]; then

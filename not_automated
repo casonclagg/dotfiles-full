@@ -32,3 +32,9 @@ pavucontrol
 
 # Install virtualbox
 sudo apt install ./virtualbox-6.1_6.1.8-137981_Ubuntu_eoan_amd64.deb
+
+# Teatime Slack Colors
+#1A1D21,#1A2B23,#7A6227,#1A1D21,#2B281A,#967329,#917230,#D439D1,#2B241A,#5E4A1F
+
+# Ulti Slack Colors
+#1A1D21,#1A2B23,#379E54,#1A1D21,#1A2B23,#3E8C54,#277D3F,#FC30D0,#1A2B23,#298543
