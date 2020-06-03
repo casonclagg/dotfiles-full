@@ -34,14 +34,17 @@ alias l='ls -CF'
 # alias homesick-push='cd ~/.homesick/repos/dotfiles-full && git add -A && git commit -m "random update" && git push'
 alias homesick-pull='homeshick pull dotfiles-full'
 
-# TODO - detect OS and make google-chrome be something else if it needs to be
-alias gh="google-chrome-stable https://github.com &"
-alias ex='nautilus . &'
+if [[ "$os" == 'Linux' ]]; then
+  # Linux Business
+  alias gh="google-chrome-stable https://github.com &"
+  alias ex='nautilus . &'
+elif [[ "$os" == 'Darwin' ]]; then
+  # Mac Business
+  alias ex='open . &'
+fi
 
-alias st='git status'
 alias gitlogs='git log --decorate --graph --oneline --all'
 
-alias ex='open . &'
 alias tod='cd ~/projects'
 alias tog='cd ~/Google\ Drive'
 alias killds='rm -f $(find . -name ".DS_Store" -type f)'
