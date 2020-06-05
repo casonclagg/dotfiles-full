@@ -25,6 +25,9 @@ PATH=$PATH:$HOME/bin
 ###############################################################################
 # Shortcuts                                                                   #
 ###############################################################################
+mkdir -p ~/mongodata
+alias doamongo='docker run --name mongo -d -v ~/mongodata:/data/db -p 27017:27017 mongo'
+alias doarabbit='docker run -p 15672:15672 -d --hostname myrabbit --name rabbit rabbitmq:3-management'
 
 alias k='kubectl'
 
