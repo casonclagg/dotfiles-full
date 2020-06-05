@@ -39,7 +39,7 @@ alias homesick-pull='homeshick pull dotfiles-full'
 
 if [[ "$os" == 'Linux' ]]; then
   # Linux Business
-  alias gh="google-chrome-stable https://github.com &"
+  alias gh="google-chrome-stable https://github.com"
   alias ex='nautilus . &'
 elif [[ "$os" == 'Darwin' ]]; then
   # Mac Business
