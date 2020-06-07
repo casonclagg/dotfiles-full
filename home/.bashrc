@@ -48,8 +48,6 @@ fi
 
 alias gitlogs='git log --decorate --graph --oneline --all'
 
-alias tod='cd ~/projects'
-alias tog='cd ~/Google\ Drive'
 alias killds='rm -f $(find . -name ".DS_Store" -type f)'
 
 alias resource='source ~/.bash_profile && echo "Done!"'
