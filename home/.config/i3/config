@@ -42,7 +42,7 @@ bindsym $mod+Ctrl+Up exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym $mod+Ctrl+Right exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 bindsym $mod+Ctrl+Left exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 
- take a screenshot
+# take a screenshot
 bindsym --release $mod+z exec scrot -s ~/Downloads/Screenshot%Y-%m-%d%H:%M:%S.png
 
 # Use Mouse+$mod to drag floating windows to their wanted position
