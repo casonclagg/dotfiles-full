@@ -206,7 +206,7 @@ set $base0F #FF5370
 # Status Bar
 bar {
   position top
-  status_command i3status -c ~/.i3/.i3status.conf
+  status_command i3status -c ~/config/i3/.i3status.conf
 
   colors {
       background $base00
