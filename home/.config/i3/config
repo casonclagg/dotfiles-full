@@ -261,8 +261,9 @@ bindsym $mod+Ctrl+l "exec i3lock -c '#000000'"
 exec_always --no-startup-id xautolock -time 10 -locker 'i3lock -c $lockcolor'
 
 # window settings for specific applications
-assign [class="Spotify"] $ws3
-assign [class="Slack"] $ws2
+assign [class="Spotify Premium"] $ws8
+assign [class="Spotify"] $ws8
+assign [class="Slack"] $ws9
 
 # floating apps
 for_window [class="Pavucontrol"] floating enable
