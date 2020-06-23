@@ -25,3 +25,7 @@ Local Files
 -----------
 There's a special local files folder somewhere secret! Use it.
 
+
+TODO
+-----
+https://github.com/b-ryan/powerline-shell#bash
