@@ -53,7 +53,7 @@ function usage() {
 # TODO - Test this
 function install_random() {
   pip install --upgrade pip
-
+  sudo apt-get install -y exfat-utils exfat-fuse
   # Not sure I need to do this....
   sudo apt-get remove --purge alsa-base alsa-utils pulseaudio indicator-sound
   sudo apt-get install -y alsa-base alsa-utils pulseaudio indicator-sound
