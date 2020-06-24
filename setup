@@ -55,12 +55,14 @@ function install_random() {
   pip install --upgrade pip
 
   # Not sure I need to do this....
-  sudo apt-get install -y alsa-utils pulseaudio
+  sudo apt-get remove --purge alsa-base alsa-utils pulseaudio indicator-sound
+  sudo apt-get install -y alsa-base alsa-utils pulseaudio indicator-sound
+  sudo alsa force-reload
 
   # TODO - Install virtualbox
   # TODO - Install VLC
   
-  # Install non-sense
+  # Install nonsense
   sudo apt install -y ruby
   gem install lolcat
   sudo apt-get install -y figlet cowsay fortune

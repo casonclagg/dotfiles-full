@@ -28,4 +28,17 @@ There's a special local files folder somewhere secret! Use it.
 
 TODO
 -----
-https://github.com/b-ryan/powerline-shell#bash
+
+1. https://github.com/b-ryan/powerline-shell#bash
+2. install imagemagick
+3. script to get OS drive goodies into a safe backup
+    - .bash_history
+    - .ssh/
+4. Setup multiple monitors for i3
+    - Currently have to use `sudo nvidia-settings`
+5. Turn on the nvidia whatever pipeline so there no screen tearing
+6. Sound is absolute trash, not sure how to fix
+7. Setup docker group and add current user to it
+8. Install virtualbox
+9. Install VLC
+  
