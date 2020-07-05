@@ -17,10 +17,19 @@ fi
 source ~/.exports
 source $HOME/.homesick/repos/homeshick/homeshick.sh
 
-export CLICOLOR=1
-export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
-
 PATH=$PATH:$HOME/bin
+
+# Powerline Bash Prompt Setup https://github.com/b-ryan/powerline-shell#bash
+export CLICOLOR=1
+# export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+
+function _update_ps1() {
+    PS1=$(powerline-shell $?)
+}
+
+if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
 
 ###############################################################################
 # Shortcuts                                                                   #

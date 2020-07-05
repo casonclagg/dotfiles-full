@@ -3,22 +3,15 @@
 #
 # Things you may or may not want to do after intial setup
 
+# make a key
 SSH_EMAIL=""
-
-# Make a key
 ssh-keygen -t rsa -b 4096 -C $SSH_EMAIL
-
-# Put it in github...
+#### Put it in github...
 
 # Enable SSH
 sudo apt-get purge openssh-server
 sudo apt-get install openssh-server
 sudo service ssh status
-
-sudo ufw allow ssh
-sudo ufw enable
-sudo ufw status
-
 
 # Sound Stuff (This isnt a recipe, just random commands)
 alsactl restore

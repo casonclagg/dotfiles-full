@@ -55,13 +55,16 @@ function install_random() {
   pip install --upgrade pip
   sudo apt-get install -y exfat-utils exfat-fuse
   # Not sure I need to do this....
-  sudo apt-get remove --purge alsa-base alsa-utils pulseaudio indicator-sound
+  sudo apt-get remove -y --purge alsa-base alsa-utils pulseaudio indicator-sound
   sudo apt-get install -y alsa-base alsa-utils pulseaudio indicator-sound
   sudo alsa force-reload
 
-  # TODO - Install virtualbox
-  # TODO - Install VLC
-  
+  # Install Virtualbox & VLC & ImageMagick
+  sudo apt-get install -y virtualbox imagemagick vlc
+
+  # Install powerline
+  pip install powerline-shell
+
   # Install nonsense
   sudo apt install -y ruby
   gem install lolcat
@@ -77,7 +80,12 @@ function install_random() {
   sudo apt install -y ffmpeg 
   sudo add-apt-repository ppa:obsproject/obs-studio
   sudo apt update
-  sudo apt install -y obs-studio
+  sudo apt install -y obs-studio # TODO - I think this makes your push enter....
+
+  # Firewall
+  sudo ufw enable
+  sudo ufw status
+  
 }
 
 function install_apt_packages() {
@@ -286,6 +294,9 @@ function install_docker() {
 
     sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
     sudo systemctl restart docker
+
+    # Setup docker group - https://docs.docker.com/engine/install/linux-postinstall/
+    sudo groupadd docker && sudo usermod -aG docker $USER
   fi
 }
 
@@ -360,7 +371,7 @@ function main() {
 
   install_vim_plugins "${DEFAULT_VIM_PLUGINS}"
   # install_dotfiles
-
+  install_random
 
   exit 0
 }
