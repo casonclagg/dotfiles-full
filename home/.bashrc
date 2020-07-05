@@ -170,7 +170,7 @@ function tre() {
   tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
-source ~/.prompt
+# source ~/.prompt
 
 export NVM_DIR="$HOME/.nvm"
 
