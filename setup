@@ -53,14 +53,14 @@ function usage() {
 # TODO - Test this
 function install_random() {
   pip install --upgrade pip
-  sudo apt-get install -y exfat-utils exfat-fuse
+  sudo apt install -y exfat-utils exfat-fuse
   # Not sure I need to do this....
-  sudo apt-get remove -y --purge alsa-base alsa-utils pulseaudio indicator-sound
-  sudo apt-get install -y alsa-base alsa-utils pulseaudio indicator-sound
+  sudo apt remove -y --purge alsa-base alsa-utils pulseaudio indicator-sound
+  sudo apt install -y alsa-base alsa-utils pulseaudio indicator-sound
   sudo alsa force-reload
 
   # Install Virtualbox & VLC & ImageMagick
-  sudo apt-get install -y virtualbox imagemagick vlc
+  sudo apt install -y virtualbox imagemagick vlc
 
   # Install powerline
   pip install powerline-shell
@@ -68,12 +68,12 @@ function install_random() {
   # Install nonsense
   sudo apt install -y ruby
   gem install lolcat
-  sudo apt-get install -y figlet cowsay fortune
+  sudo apt install -y figlet cowsay fortune
   figlet noice! | lolcat
 
   # make nautilus not stupid
-  sudo apt-get remove -y nautilus-share
-  sudo apt-get install -y nautilus-share
+  sudo apt remove -y nautilus-share
+  sudo apt install -y nautilus-share
   mkdir -p /var/lib/samba/usershares
 
   # install OBS
@@ -91,7 +91,7 @@ function install_random() {
 function install_apt_packages() {
   for apt_pkg in $@; do
     if ! $(dpkg -s $apt_pkg &> /dev/null); then
-      sudo DEBIAN_FRONTEND=noninteractive apt-get install -qq -y $apt_pkg
+      sudo DEBIAN_FRONTEND=noninteractive apt install -qq -y $apt_pkg
     fi
   done
 }
@@ -225,8 +225,8 @@ function install_uiapps() {
   if [[ $(ubuntu-drivers devices | grep -q nvidia-driver) -eq 0 ]]; then
     if [[ $(dpkg -s nvidia-driver-440 &> /dev/null) -ne 0 ]]; then
       sudo add-apt-repository -y ppa:graphics-drivers/ppa
-      sudo apt-get update
-      sudo apt-get install -y nvidia-driver-440
+      sudo apt update
+      sudo apt install -y nvidia-driver-440
     fi
   fi
 
@@ -235,8 +235,8 @@ function install_uiapps() {
     # TODO I think theres a snap
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
-    sudo apt-get update
-    sudo apt-get install -y google-chrome-stable
+    sudo apt update
+    sudo apt install -y google-chrome-stable
     echo "BROWSER=$(which google-chrome)" >> ~/.bash_local
   fi
 
@@ -259,8 +259,8 @@ function install_vscode() {
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 
     # install code
-    sudo apt-get update
-    sudo apt-get install -y code
+    sudo apt update
+    sudo apt install -y code
 
     # install all the extensions
     VSCODE_EXTENSIONS="
@@ -286,13 +286,13 @@ function install_vscode() {
 
 function install_docker() {
   if ! _has docker; then
-    sudo apt-get install -y docker.io
+    sudo apt install -y docker.io
 
     distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
     curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
     curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
 
-    sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
+    sudo apt update && sudo apt install -y nvidia-container-toolkit
     sudo systemctl restart docker
 
     # Setup docker group - https://docs.docker.com/engine/install/linux-postinstall/
@@ -308,11 +308,12 @@ function install_devtools() {
 
   # gcloud cli
   if ! _has gcloud; then
-    source /etc/lsb-release
     export CLOUD_SDK_REPO="cloud-sdk-${DISTRIB_CODENAME}"
-    echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-    sudo apt-get update && sudo apt-get install -y google-cloud-sdk
+    source /etc/lsb-release
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+    sudo apt install apt-transport-https ca-certificates gnupg
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+    sudo apt update && sudo apt install -y google-cloud-sdk
   fi
 
   # kubectl cli
@@ -356,10 +357,10 @@ function main() {
   done
 
   # update apt packages
-  sudo apt-get update -q
+  sudo apt update -q
 
   # upgrade everything (no balls)
-  sudo apt-get upgrade -y
+  sudo apt upgrade -y
 
   install_apt_packages "${DEFAULT_APT_PACKAGES}"
 
