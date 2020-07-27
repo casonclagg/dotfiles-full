@@ -3,26 +3,15 @@
 #
 # Things you may or may not want to do after intial setup
 
+# make a key
 SSH_EMAIL=""
-
-# Make a key
 ssh-keygen -t rsa -b 4096 -C $SSH_EMAIL
-
-# Put it in github...
+#### Put it in github...
 
 # Enable SSH
-sudo apt-get remove --purge alsa-base pulseaudio indicator-sound
-sudo apt-get install alsa-base pulseaudio indicator-sound
-sudo alsa force-reload
-
 sudo apt-get purge openssh-server
 sudo apt-get install openssh-server
 sudo service ssh status
-
-sudo ufw allow ssh
-sudo ufw enable
-sudo ufw status
-
 
 # Sound Stuff (This isnt a recipe, just random commands)
 alsactl restore
@@ -32,9 +21,3 @@ pavucontrol
 
 # Install virtualbox
 sudo apt install ./virtualbox-6.1_6.1.8-137981_Ubuntu_eoan_amd64.deb
-
-# Teatime Slack Colors
-#1A1D21,#1A2B23,#7A6227,#1A1D21,#2B281A,#967329,#917230,#D439D1,#2B241A,#5E4A1F
-
-# Ulti Slack Colors
-#1A1D21,#1A2B23,#379E54,#1A1D21,#1A2B23,#3E8C54,#277D3F,#FC30D0,#1A2B23,#298543

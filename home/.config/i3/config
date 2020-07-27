@@ -33,13 +33,6 @@ workspace $ws8 output $monitor_two
 workspace $ws9 output $monitor_two
 workspace $ws10 output $monitor_two
 
-# set $monitor_one DVI-D-0
-# set $monitor_two HDMI-0
-
-# i3 config file (v4)
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
 set $mod Mod1
 
 # dont move focus with the mouse
