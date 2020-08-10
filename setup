@@ -57,6 +57,8 @@ function install_random() {
   # Not sure I need to do this....
   sudo apt remove -y --purge alsa-base alsa-utils pulseaudio indicator-sound
   sudo apt install -y alsa-base alsa-utils pulseaudio indicator-sound
+  sudo apt install -y audacity
+  sudo apt install -y openscad
   sudo alsa force-reload
 
   # Install Virtualbox & VLC & ImageMagick

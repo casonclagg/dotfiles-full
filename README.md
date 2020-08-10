@@ -36,5 +36,3 @@ TODO
     - Currently have to use `sudo nvidia-settings`
 5. Turn on the nvidia whatever pipeline so there no screen tearing
 6. Sound is absolute trash, not sure how to fix  
-
-sudo apt install -y audacity
