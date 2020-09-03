@@ -28,6 +28,11 @@ There's a special local files folder somewhere secret! Use it.
 
 TODO
 -----
+1. nvm is jacked up
+
+    N/A: version "N/A -> N/A" is not yet installed.
+
+    You need to run "nvm install N/A" to install it before using it.
 
 3. script to get OS drive goodies into a safe backup
     - .bash_history
