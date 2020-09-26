@@ -5,6 +5,13 @@
 # this file and re-run i3-config-wizard(1).
 #
 
+# Bind media keys
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+# playerctl --player=spotify,vlc,chromium play
+
 # configure monitors
 set $monitor_one DP-2
 set $monitor_two DVI-D-0
