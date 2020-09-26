@@ -11,6 +11,7 @@ DEFAULT_APT_PACKAGES="
 apt-utils
 build-essential
 curl
+playerctl
 fonts-font-awesome
 fonts-powerline
 git
