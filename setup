@@ -175,7 +175,9 @@ function install_golang() {
 
 function install_python() {
   if ! _has pyenv; then
-    install_apt_packages "libreadline-dev libssl-dev libbz2-dev zlib1g-dev"
+    # Install python deps
+    install_apt_packages "make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git"
+
     curl -LSs https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
     {
       echo 'export PATH="$HOME/.pyenv/bin:$PATH"'
