@@ -1,13 +1,9 @@
 #!/bin/bash
 os=`uname`
 
-if [[ "$os" == 'Linux' ]]; then
-  # Linux Business
-  alias ls='ls --color=auto'
-elif [[ "$os" == 'Darwin' ]]; then
-  # Mac Business
-  alias ls='ls -G'
-fi
+alias ls='ls --color=auto'
+TERMINAL=rxvt-unicode
+export TERMINAL
 
 # run local bash stuff (pc-specific aliases and such)
 if [ -f ~/.bash_local ]; then
@@ -27,9 +23,9 @@ function _update_ps1() {
     PS1=$(powerline-shell $?)
 }
 
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+# if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+#     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+# fi
 
 ###############################################################################
 # Shortcuts                                                                   #
@@ -46,14 +42,15 @@ alias l='ls -CF'
 # alias homesick-push='cd ~/.homesick/repos/dotfiles-full && git add -A && git commit -m "random update" && git push'
 alias homesick-pull='homeshick pull dotfiles-full'
 
-if [[ "$os" == 'Linux' ]]; then
-  # Linux Business
-  alias gh="google-chrome-stable https://github.com"
-  alias ex='nautilus . &'
-elif [[ "$os" == 'Darwin' ]]; then
-  # Mac Business
-  alias ex='open . &'
-fi
+alias gh="google-chrome-stable https://github.com"
+alias ex='nautilus . &'
+# if [[ "$os" == 'Linux' ]]; then
+#   # Linux Business
+ 
+# elif [[ "$os" == 'Darwin' ]]; then
+#   # Mac Business
+#   alias ex='open . &'
+# fi
 
 alias gitlogs='git log --decorate --graph --oneline --all'
 
@@ -75,19 +72,19 @@ alias listfunctions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'" # show non 
 # OSX                                                                         #
 ###############################################################################
 
-if [[ "$os" == 'Darwin' ]]; then
-  # Show/hide desktop icons
-  alias desktopShow="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-  alias desktopHide="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+# if [[ "$os" == 'Darwin' ]]; then
+#   # Show/hide desktop icons
+#   alias desktopShow="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+#   alias desktopHide="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 
-  # Show/hide hidden files by default
-  alias hiddenFilesShow="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-  alias hiddenFilesHide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+#   # Show/hide hidden files by default
+#   alias hiddenFilesShow="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+#   alias hiddenFilesHide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
-  # Show/hide all filename extensions
-  alias fileExtensionsShow="defaults write NSGlobalDomain AppleShowAllExtensions -bool true && killall Finder"
-  alias fileExtensionsHide="defaults write NSGlobalDomain AppleShowAllExtensions -bool false && killall Finder"
-fi
+#   # Show/hide all filename extensions
+#   alias fileExtensionsShow="defaults write NSGlobalDomain AppleShowAllExtensions -bool true && killall Finder"
+#   alias fileExtensionsHide="defaults write NSGlobalDomain AppleShowAllExtensions -bool false && killall Finder"
+# fi
 ################
 # Docker
 ################
@@ -179,4 +176,4 @@ export NVM_DIR="$HOME/.nvm"
 
 nvm use 14
 
-printf '\nhomeshick --quiet refresh' >> $HOME/.bashrc
+# printf '\nhomeshick --quiet refresh' >> $HOME/.bashrc
