@@ -174,6 +174,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# TODO - nvm is messed up, fix it...
 nvm use 14
-
-# printf '\nhomeshick --quiet refresh' >> $HOME/.bashrc
