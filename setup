@@ -302,7 +302,10 @@ function install_docker() {
     sudo systemctl restart docker
 
     # Setup docker group - https://docs.docker.com/engine/install/linux-postinstall/
-    sudo groupadd docker && sudo usermod -aG docker $USER
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+    # su ${USER}
+    sudo systemctl restart docker
   fi
 }
 
