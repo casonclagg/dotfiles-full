@@ -60,6 +60,7 @@ function install_random() {
   sudo apt install -y alsa-base alsa-utils pulseaudio indicator-sound
   sudo apt install -y audacity
   sudo apt install -y openscad
+  sudo apt install -y youtube-dl
   sudo alsa force-reload
 
   # Install Virtualbox & VLC & ImageMagick
@@ -70,7 +71,7 @@ function install_random() {
 
   # Install nonsense
   sudo apt install -y ruby
-  gem install lolcat
+  sudo gem install lolcat
   sudo apt install -y figlet cowsay fortune
   figlet noice! | lolcat
 
