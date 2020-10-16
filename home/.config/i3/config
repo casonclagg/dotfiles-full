@@ -13,8 +13,8 @@ bindsym XF86AudioPrev exec playerctl previous
 # playerctl --player=spotify,vlc,chromium play
 
 # configure monitors
-set $monitor_one DP-1
-set $monitor_two DVI-D-1
+set $monitor_one DP-2
+set $monitor_two DVI-D-0
 
 # configure workspaces
 set $ws1 1
