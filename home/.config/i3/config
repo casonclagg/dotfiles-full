@@ -268,3 +268,5 @@ assign [class="Discord"] $ws9
 
 # floating apps
 # for_window [class="Pavucontrol"] floating enable
+
+exec_always --no-startup-id numlockx on

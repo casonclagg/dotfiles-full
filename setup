@@ -60,7 +60,7 @@ function install_random() {
   sudo apt install -y alsa-base alsa-utils pulseaudio indicator-sound
   sudo apt install -y audacity
   sudo apt install -y openscad
-  sudo apt install -y youtube-dl
+  sudo apt install -y numlockx
   sudo alsa force-reload
 
   # Install Virtualbox & VLC & ImageMagick
@@ -68,7 +68,8 @@ function install_random() {
 
   # Install powerline
   pip install powerline-shell
-
+  pip install youtube-dl
+  
   # Install nonsense
   sudo apt install -y ruby
   sudo gem install lolcat
