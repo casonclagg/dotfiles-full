@@ -13,8 +13,10 @@ bindsym XF86AudioPrev exec playerctl previous
 # playerctl --player=spotify,vlc,chromium play
 
 # configure monitors
+# How to find your monitors:
+# xrandr
 set $monitor_one DP-2
-set $monitor_two DVI-D-0
+set $monitor_two HDMI-0
 
 # configure workspaces
 set $ws1 1
