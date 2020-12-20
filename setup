@@ -51,6 +51,14 @@ function usage() {
   "
 }
 
+function install_brave() {
+  sudo apt install apt-transport-https curl gnupg
+  curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+  echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+  sudo apt update
+  sudo apt install -y brave-browser
+}
+
 # TODO - Test this
 function install_random() {
   pip install --upgrade pip
@@ -350,7 +358,7 @@ function main() {
         ;;
 
       f) # 
-        PACKAGES="${PACKAGES} uiapps docker vscode"
+        PACKAGES="${PACKAGES} uiapps docker vscode brave random"
         ;;
 
       m) # minimal
@@ -381,8 +389,6 @@ function main() {
   done
 
   install_vim_plugins "${DEFAULT_VIM_PLUGINS}"
-  # install_dotfiles
-  install_random
 
   exit 0
 }
