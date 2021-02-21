@@ -32,6 +32,7 @@ mkdir -p ~/mongodata
 alias doamongo='docker run --name mongo -d -v ~/mongodata:/data/db -p 27017:27017 mongo'
 alias doarabbit='docker run -p 15672:15672 -d --hostname myrabbit --name rabbit rabbitmq:3-management'
 
+alias yt='youtube-dl'
 alias k='kubectl'
 
 alias ll='ls -alF'
@@ -171,7 +172,11 @@ function tre() {
 export NVM_DIR="$HOME/.nvm"
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_com pletion
+
+function yts() {
+    youtube-dl --extract-audio --audio-format mp3 "$1"
+}
 
 # TODO - nvm is messed up, fix it...
 # nvm use 14
